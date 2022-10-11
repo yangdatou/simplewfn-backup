@@ -2,6 +2,7 @@
 #include <string>
 #include <cassert>
 
+#define ARMA_ALLOW_FAKE_GCC
 #include <armadillo>
 
 const double TOL = 1e-8;
