@@ -9,14 +9,14 @@ SO_FLAGS ?= -shared -fPIC
 CXXFLAGS ?= -Wall -Werror -Wno-sign-compare -Wno-comment -std=c++11 -O3 -I $(ARMADILLO_INCLUDE)
 
 # Run the tests
-test: rhf
+test: ./bin/rhf.o ./bin/utils.o
 	python ./test/test-h2o.py
 
-rhf: ./src/rhf.cc ./bin/utils.o
+./bin/rhf.o: ./src/rhf.cc ./bin/utils.o
 	$(CXX) $(CXXFLAGS)             -o ./bin/rhf.o    -c $^
 	$(CXX) $(CXXFLAGS) $(SO_FLAGS) -o ./lib/rhf.so   -c $^
 
-utils: ./src/utils.cc
+./bin/utils.o: ./src/utils.cc
 	$(CXX) $(CXXFLAGS)             -o ./bin/utils.o  -c $^
 	$(CXX) $(CXXFLAGS) $(SO_FLAGS) -o ./lib/utils.so -c $^
 
