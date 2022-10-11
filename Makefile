@@ -5,6 +5,7 @@ ARMADILLO_INCLUDE ?= /home/yangjunjie/packages/armadillo-11.4.1/include
 # Set compiler
 CXX      ?= g++
 # Set c++ compiler flags
+SO_FLAGS ?= -shared
 CXXFLAGS ?= -Wall -Werror -Wno-sign-compare -Wno-comment -std=c++11 -O3 -I $(ARMADILLO_INCLUDE)
 
 # Run the tests
@@ -12,8 +13,8 @@ test: test
 	python ./test/test-h2o.py
 
 # Compile the main executable
-rhf: ./src/rhf.cc
-	$(CXX) $(CXXFLAGS) -o ./bin/rhf.so $^
+rhf_so: ./src/rhf.cc
+	$(CXX) $(CXXFLAGS) $(SO_FLAGS) -o ./bin/rhf.so $^
 
 # Remove automatically generated files
 clean :
