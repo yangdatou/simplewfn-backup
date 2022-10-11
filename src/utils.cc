@@ -47,7 +47,7 @@ Int2eAO build_int2e_ao(double *int2e, int nao)
 {
     auto num_pair = nao * (nao + 1) / 2;
 
-    Int2eAO int2e_ao(num_int2e, num_pair, arma::fill::zeros);
+    Int2eAO int2e_ao(num_pair, num_pair, arma::fill::zeros);
 
     for (auto munu = 0; munu < num_pair; ++munu)
     {
