@@ -18,6 +18,7 @@ def test_h2o(basis='ccpvdz'):
 
     h1e  = kin + nuc
     h2e  = mol.intor('int2e', aosym=4)
+    print('h2e.shape = ', h2e.shape)
 
     num_pair = nao * (nao + 1) // 2
     num_h2e  = num_pair * (num_pair + 1) // 2
