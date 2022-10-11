@@ -25,8 +25,6 @@ def test_h2o(basis='ccpvdz'):
 
     simplewfn_rhf = numpy.ctypeslib.load_library("rhf", "./bin/")
 
-    print("simplewfn_rhf = ", simplewfn_rhf)
-
     simplewfn_rhf.test_rhf(
         ctypes.c_int(nao), 
         ctypes.c_int(nelec_alph),
