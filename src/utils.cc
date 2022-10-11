@@ -39,7 +39,7 @@ Int1eAO build_int1e_ao(double *int1e, int nao)
     {
         for (auto nu = 0; nu < nao; ++nu)
         {
-            int1e_ao(mu, nu) = int1e[INDEX(mu, nu)];
+            int1e_ao(mu, nu) = int1e[mu*nao + nu];
         }
     }
     return int1e_ao;
@@ -48,13 +48,15 @@ Int1eAO build_int1e_ao(double *int1e, int nao)
 Int2eAO build_int2e_ao(double *int2e, int nao)
 {
     auto num_pair = nao * (nao + 1) / 2;
-    auto num_int2e = num_pair * (num_pair + 1) / 2;
 
-    Int2eAO int2e_ao(num_int2e, arma::fill::zeros);
+    Int2eAO int2e_ao(num_int2e, num_pair, arma::fill::zeros);
 
-    for (auto int2e_idx = 0; int2e_idx < num_int2e; ++int2e_idx)
+    for (auto munu = 0; munu < num_pair; ++munu)
     {
-        int2e_ao(int2e_idx) = int2e[int2e_idx];
+        for (auto lmsg = 0; lmsg < num_pair; ++lmsg)
+        {
+            int2e_ao(munu, lmsg) = int2e[munu*num_pair + lmsg];
+        }
     }
 
     return int2e_ao;
@@ -65,12 +67,11 @@ double get_int1e_ao_element(const Int1eAO &int1e_ao, int mu, int nu)
     return int1e_ao(mu, nu);
 }
 
-double get_int2e_ao_element(const Int2eAO &int2e, int mu, int nu, int lm, int sg)
+double get_int2e_ao_element(const Int2eAO &int2e_ao, int mu, int nu, int lm, int sg)
 {
     auto munu = mu > nu ? mu * (mu + 1) / 2 + nu : nu * (nu + 1) / 2 + mu;
     auto lmsg = lm > sg ? lm * (lm + 1) / 2 + sg : sg * (sg + 1) / 2 + lm;
-    auto munu_lmsg = munu > lmsg ? munu * (munu + 1) / 2 + lmsg : lmsg * (lmsg + 1) / 2 + munu;
-    return int2e(munu_lmsg);
+    return int2e_ao(munu, lmsg);
 }
 
 Int2eMO make_eri_mo(const Int2eAO &eri_ao, MOCoeff mo_coeff)

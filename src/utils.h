@@ -9,9 +9,9 @@ typedef arma::mat Int1e;
 typedef arma::mat Int1eAO;
 typedef arma::mat Int1eMO;
 
-typedef arma::vec Int2e;
-typedef arma::vec Int2eAO;
-typedef arma::vec Int2eMO;
+typedef arma::mat Int2e;
+typedef arma::mat Int2eAO;
+typedef arma::mat Int2eMO;
 
 typedef arma::mat CoeffMO;  // MO coefficients
 typedef arma::mat EnergyMO; // MO energies
