@@ -22,7 +22,7 @@ test: ./lib/rhf.so
 ./bin/utils.o: ./bin/utils.o
 	$(CXX) $(CXXFLAGS) $(OBJ_FLAGS) ./bin/utils.o -c $^
 
-./lib/utils.so: ./src/utils.cc
+./lib/utils.so: ./bin/utils.o
 	$(CXX) $(CXXFLAGS) $(SO_FLAGS) ./lib/utils.so    $^
 
 # Remove automatically generated files
