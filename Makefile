@@ -16,7 +16,7 @@ test: ./lib/rhf.so
 ./bin/rhf.o: ./src/rhf.cc
 	$(CXX) $(CXXFLAGS) $(OBJ_FLAGS) ./bin/rhf.o -c $^
 
-./lib/rhf.so: ./bin/rhf.o
+./lib/rhf.so: ./bin/rhf.o ./bin/utils.o
 	$(CXX) $(CXXFLAGS) $(SO_FLAGS) ./lib/rhf.so    $^
 
 ./bin/utils.o: ./bin/utils.o
