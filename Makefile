@@ -9,7 +9,7 @@ SO_FLAGS ?= -shared
 CXXFLAGS ?= -Wall -Werror -Wno-sign-compare -Wno-comment -std=c++11 -O3 -I $(ARMADILLO_INCLUDE)
 
 # Run the tests
-test: test
+test: rhf_so
 	python ./test/test-h2o.py
 
 # Compile the main executable
