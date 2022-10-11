@@ -12,7 +12,7 @@ CXXFLAGS ?= -Wall -Werror -Wno-sign-compare -Wno-comment -std=c++11 -O3 -I $(ARM
 test: rhf
 	python ./test/test-h2o.py
 
-rhf: ./src/rhf.cc ./bin/utils.o
+rhf: ./src/rhf.cc utils
 	$(CXX) $(CXXFLAGS)             -o ./bin/rhf.o  $^
 	$(CXX) $(CXXFLAGS) $(SO_FLAGS) -o ./lib/rhf.so $^
 
