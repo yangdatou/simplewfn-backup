@@ -6,11 +6,11 @@ ARMADILLO_INCLUDE ?= /home/yangjunjie/packages/armadillo-11.4.1/include
 CXX      ?= g++
 # Set c++ compiler flags
 SO_FLAGS  ?= -shared -fPIC
-OBJ_FLAGS ?= -c
+OBJ_FLAGS ?= -c      -fPIC
 CXXFLAGS  ?= -Wall -Werror -Wno-sign-compare -Wno-comment -std=c++11 -O3 -I $(ARMADILLO_INCLUDE)
 
 # Run the tests
-test: ./bin/rhf.o ./bin/utils.o
+test: ./bin/rhf.o
 	python ./test/test-h2o.py
 
 ./bin/rhf.o: ./src/rhf.cc ./bin/utils.o
