@@ -23,7 +23,7 @@ def test_h2o(basis='ccpvdz'):
     assert h1e.shape == (nao,nao)
     assert h2e.shape == (nao, nao, nao, nao)
 
-    simplewfn_rhf = numpy.ctypeslib.load_library("rhf", "../bin/")
+    simplewfn_rhf = numpy.ctypeslib.load_library("rhf", "./bin/")
 
     simplewfn_rhf.test_rhf(
         ctypes.c_int(nao), 
