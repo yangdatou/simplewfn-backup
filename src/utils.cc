@@ -6,7 +6,7 @@ void print_matrix(const arma::mat &mat, std::string title)
     auto nrow = mat.n_rows;
 
     printf("\n%s\n", title.c_str());
-    for (auto icol = 0; icol < ncol; ++j)
+    for (auto icol = 0; icol < ncol; ++icol)
     {
         if (icol == 0)
         {
