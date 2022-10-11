@@ -17,11 +17,14 @@ def test_h2o(basis='ccpvdz'):
     nuc  = mol.intor('int1e_nuc')
 
     h1e  = kin + nuc
-    h2e  = mol.intor('int2e')
+    h2e  = mol.intor('int2e', aosym=4)
 
-    assert s1e.shape == (nao,nao)
-    assert h1e.shape == (nao,nao)
-    assert h2e.shape == (nao, nao, nao, nao)
+    num_pair = nao * (nao + 1) // 2
+    num_h2e  = num_pair * (num_pair + 1) // 2
+
+    assert s1e.shape == (nao, nao)
+    assert h1e.shape == (nao, nao)
+    assert h2e.shape == (num_h2e,)
 
     simplewfn_rhf = numpy.ctypeslib.load_library("rhf", "./bin/")
 

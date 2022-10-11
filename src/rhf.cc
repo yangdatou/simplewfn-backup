@@ -2,8 +2,7 @@
 #include <string>
 #include <cassert>
 
-#define ARMA_ALLOW_FAKE_GCC
-#include <armadillo>
+#include "utils.h"
 
 const double TOL = 1e-8;
 const int MAX_ITER = 100;
@@ -14,11 +13,12 @@ extern "C" void test_rhf(int nao, int nelec_alph, int nelec_beta, double *s1e, d
     std::cout << "nelec_alph = " << nelec_alph << std::endl;
     std::cout << "nelec_beta = " << nelec_beta << std::endl;
 
-    arma::mat ovlp(s1e, nao, nao, false);
-    arma::mat hcore(h1e, nao, nao, false);
+    Int1eAO s1e_ao = build_int1e_ao(s1e, nao);
+    Int1eAO h1e_ao = build_int1e_ao(h1e, nao);
+    Int2eAO h2e_ao = build_int2e_ao(h2e, nao);
 
-    ovlp.print("ovlp");
-    hcore.print("hcore");
+    print_matrix(s1e_ao, "Overlap Matrix");
+    print_matrix(h1e_ao, "One-electron Hamiltonian Matrix");
 }
 
 // double solve_rhf(int nao, int nelec_alph, int nelec_beta, double *s1e, double *h1e, double *h2e) {
