@@ -14,7 +14,7 @@ typedef arma::mat Int2eAO;
 typedef arma::mat Int2eMO;
 
 typedef arma::mat CoeffMO;  // MO coefficients
-typedef arma::mat EnergyMO; // MO energies
+typedef arma::vec EnergyMO; // MO energies
 typedef arma::mat DensityMatrixAO;
 
 void print_matrix(const arma::mat& mat, std::string title);

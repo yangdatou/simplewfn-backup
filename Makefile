@@ -10,10 +10,10 @@ OBJ_FLAGS ?= -c      -fPIC
 CXXFLAGS  ?= -Wall -Werror -Wno-sign-compare -Wno-comment -std=c++11 -O3 -I $(ARMADILLO_INCLUDE)
 
 # Run the tests
-test: ./bin/rhf.o
+test: ./bin/rhf.o ./bin/utils.o
 	python ./test/test-h2o.py
 
-./bin/rhf.o: ./src/rhf.cc ./bin/utils.o
+./bin/rhf.o: ./src/rhf.cc
 	$(CXX) $(CXXFLAGS) -o ./bin/rhf.o    $(OBJ_FLAGS) $^  
 	$(CXX) $(CXXFLAGS) -o ./lib/rhf.so   $(SO_FLAGS)  $^  
 
