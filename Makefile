@@ -10,20 +10,20 @@ OBJ_FLAGS ?= -o -fPIC
 CXXFLAGS  ?= -Wall -Werror -Wno-sign-compare -Wno-comment -std=c++11 -O3 -I $(ARMADILLO_INCLUDE)
 
 # Run the tests
-test: ./bin/rhf.so 
+test: ./lib/rhf.so 
 	python ./test/test-h2o.py
 
 ./bin/rhf.o: ./src/rhf.cc
 	$(CXX) $(CXXFLAGS) $(OBJ_FLAGS) ./bin/rhf.o -c $^
 
-./bin/rhf.so: ./bin/rhf.o
-	$(CXX) $(CXXFLAGS) $(SO_FLAGS) ./bin/rhf.so    $^
+./lib/rhf.so: ./bin/rhf.o
+	$(CXX) $(CXXFLAGS) $(SO_FLAGS) ./lib/rhf.so    $^
 
 ./bin/utils.o: ./bin/utils.o
 	$(CXX) $(CXXFLAGS) $(OBJ_FLAGS) ./bin/utils.o -c $^
 
-./bin/utils.so: ./src/utils.cc
-	$(CXX) $(CXXFLAGS) $(SO_FLAGS) ./bin/utils.so    $^
+./lib/utils.so: ./src/utils.cc
+	$(CXX) $(CXXFLAGS) $(SO_FLAGS) ./lib/utils.so    $^
 
 # Remove automatically generated files
 clean :
