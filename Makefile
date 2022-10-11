@@ -5,8 +5,8 @@ ARMADILLO_INCLUDE ?= /home/yangjunjie/packages/armadillo-11.4.1/include
 # Set compiler
 CXX      ?= g++
 # Set c++ compiler flags
-SO_FLAGS  ?= -shared -fPIC -o
-OBJ_FLAGS ?= -fPIC -o
+SO_FLAGS  ?= -shared -o
+OBJ_FLAGS ?= -o
 CXXFLAGS  ?= -Wall -Werror -Wno-sign-compare -Wno-comment -std=c++11 -O3 -I $(ARMADILLO_INCLUDE)
 
 # Run the tests
@@ -14,12 +14,12 @@ test: ./bin/utils.o ./bin/rhf.o
 	python ./test/test-h2o.py
 
 ./bin/rhf.o: ./src/rhf.cc
-	$(CXX) $(CXXFLAGS) $(OBJ_FLAGS) ./bin/rhf.o    -c $^  
-	$(CXX) $(CXXFLAGS) $(SO_FLAGS)  ./lib/rhf.so   -c $^  
+	$(CXX) $(CXXFLAGS) $(OBJ_FLAGS) ./bin/rhf.o    -fPIC $^  
+	$(CXX) $(CXXFLAGS) $(SO_FLAGS)  ./lib/rhf.so   -fPIC $^  
 
 ./bin/utils.o: ./src/utils.cc
-	$(CXX) $(CXXFLAGS) $(OBJ_FLAGS) ./bin/utils.o  -c $^  
-	$(CXX) $(CXXFLAGS) $(SO_FLAGS)  ./lib/utils.so -c $^  
+	$(CXX) $(CXXFLAGS) $(OBJ_FLAGS) ./bin/utils.o  -fPIC $^  
+	$(CXX) $(CXXFLAGS) $(SO_FLAGS)  ./lib/utils.so -fPIC $^  
 
 # Remove automatically generated files
 clean :
