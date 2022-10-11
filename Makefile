@@ -14,12 +14,12 @@ test: ./bin/utils.o ./bin/rhf.o
 	python ./test/test-h2o.py
 
 ./bin/rhf.o: ./src/rhf.cc
-	$(CXX) $(CXXFLAGS) $(OBJ_FLAGS) ./bin/rhf.o  -c $^  
-	$(CXX) $(CXXFLAGS) $(SO_FLAGS)  ./lib/rhf.so -c $^  
+	$(CXX) $(CXXFLAGS) $(OBJ_FLAGS) ./bin/rhf.o  $^  
+	$(CXX) $(CXXFLAGS) $(SO_FLAGS)  ./lib/rhf.so $^  
 
 ./bin/utils.o: ./src/utils.cc
-	$(CXX) $(CXXFLAGS) $(OBJ_FLAGS) ./bin/utils.o  -c $^  
-	$(CXX) $(CXXFLAGS) $(SO_FLAGS)  ./lib/utils.so -c $^  
+	$(CXX) $(CXXFLAGS) $(OBJ_FLAGS) ./bin/utils.o  $^  
+	$(CXX) $(CXXFLAGS) $(SO_FLAGS)  ./lib/utils.so $^  
 
 # Remove automatically generated files
 clean :
