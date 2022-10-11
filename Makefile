@@ -12,7 +12,7 @@ test: test
 	python ./test/test-h2o.py
 
 # Compile the main executable
-main: ./src/rhf.cc
+rhf: ./src/rhf.cc
 	$(CXX) $(CXXFLAGS) -o ./bin/rhf.so $^
 
 # Remove automatically generated files
