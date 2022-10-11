@@ -1,7 +1,6 @@
 import ctypes
-
+import numpy
 import pyscf
-from pyscf.lib.misc import load_library
 
 def test_h2o(basis='ccpvdz'):
     mol = pyscf.M(
@@ -24,7 +23,7 @@ def test_h2o(basis='ccpvdz'):
     assert h1e.shape == (nao,nao)
     assert h2e.shape == (nao, nao, nao, nao)
 
-    simplewfn_rhf = load_library('../bin/rhf')
+    simplewfn_rhf = numpy.ctypeslib.load_library("rhf", "../bin/")
 
     simplewfn_rhf.test_rhf(
         ctypes.c_int(nao), 
