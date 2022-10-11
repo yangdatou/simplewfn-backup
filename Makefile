@@ -5,7 +5,7 @@ ARMADILLO_INCLUDE ?= /home/yangjunjie/packages/armadillo-11.4.1/include
 # Set compiler
 CXX      ?= g++
 # Set c++ compiler flags
-SO_FLAGS ?= -shared
+SO_FLAGS ?= -shared -fPIC
 CXXFLAGS ?= -Wall -Werror -Wno-sign-compare -Wno-comment -std=c++11 -O3 -I $(ARMADILLO_INCLUDE)
 
 # Run the tests

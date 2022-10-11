@@ -24,9 +24,7 @@ def test_h2o(basis='ccpvdz'):
     assert h1e.shape == (nao,nao)
     assert h2e.shape == (nao, nao, nao, nao)
 
-    
-
-    simplewfn_rhf = load_library('../bin/rhf')
+    simplewfn_rhf = load_library('./bin/rhf')
 
     simplewfn_rhf.test_rhf(
         ctypes.c_int(nao), 
@@ -36,3 +34,6 @@ def test_h2o(basis='ccpvdz'):
         h1e.ctypes.data_as(ctypes.c_void_p),
         h2e.ctypes.data_as(ctypes.c_void_p),
     )
+
+if __name__ == '__main__':
+    test_h2o()
