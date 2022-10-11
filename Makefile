@@ -1,5 +1,5 @@
 # `?=` means assigning the value to the variable if it is not already defined
-ARMADILLO_INCLUDE ?= /Users/yangjunjie/work/armadillo-11.4.1/include
+ARMADILLO_INCLUDE ?= /home/yangjunjie/packages/armadillo-11.4.1/include
 # EIGEN_INCLUDE     ?= /Users/yangjunjie/work/eigen-3.4.0/
 
 # Set compiler
