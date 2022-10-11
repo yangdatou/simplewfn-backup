@@ -26,6 +26,7 @@ void print_matrix(const arma::mat &mat, std::string title)
         {
             printf("% 9.3f", mat(irow, icol));
         }
+        printf("\n");
     }
 }
 
