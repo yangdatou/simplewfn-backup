@@ -37,4 +37,4 @@ def test_h2o(basis='ccpvdz'):
     )
 
 if __name__ == '__main__':
-    test_h2o()
+    test_h2o(basis='sto3g')
