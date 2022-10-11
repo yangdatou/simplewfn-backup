@@ -13,7 +13,7 @@ test: test
 
 # Compile the main executable
 main: ./src/rhf.cc
-	$(CXX) $(CXXFLAGS) ./bin/rhf.dylib    
+	$(CXX) $(CXXFLAGS) -o ./bin/rhf.so $^
 
 # Remove automatically generated files
 clean :
