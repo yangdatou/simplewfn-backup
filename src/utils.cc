@@ -30,7 +30,7 @@ void print_matrix(const arma::mat &mat, std::string title)
     }
 }
 
-Int1eAO build_int1e_ao(double *int1e, int nao)
+Int1eAO build_int1e_ao(double* int1e, int nao)
 {
     Int1eAO int1e_ao(nao, nao, arma::fill::zeros);
 
@@ -44,7 +44,7 @@ Int1eAO build_int1e_ao(double *int1e, int nao)
     return int1e_ao;
 }
 
-Int2eAO build_int2e_ao(double *int2e, int nao)
+Int2eAO build_int2e_ao(double* int2e, int nao)
 {
     auto num_pair = nao * (nao + 1) / 2;
 

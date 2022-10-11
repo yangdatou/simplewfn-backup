@@ -15,9 +15,9 @@ extern "C" void test_rhf(int nao, int nelec_alph, int nelec_beta, double *s1e, d
 
     auto nmo = nao;
 
-    Int1eAO s1e_ao = build_int1e_ao(s1e, nao);
-    Int1eAO h1e_ao = build_int1e_ao(h1e, nao);
-    Int2eAO h2e_ao = build_int2e_ao(h2e, nao);
+    auto s1e_ao = build_int1e_ao(s1e, nao);
+    auto h1e_ao = build_int1e_ao(h1e, nao);
+    auto h2e_ao = build_int2e_ao(h2e, nao);
 
     CoeffMO  coeff_mo(nao, nmo, arma::fill::zeros);
     EnergyMO energy_mo(nmo, arma::fill::zeros);
