@@ -19,11 +19,11 @@ extern "C" void test_rhf(int nao, int nelec_alph, int nelec_beta, double *s1e, d
     auto h1e_ao = build_int1e_ao(h1e, nao);
     auto h2e_ao = build_int2e_ao(h2e, nao);
 
+    print_matrix(s1e_ao, "Overlap matrix");
+    print_matrix(h1e_ao, "Core Hamiltonian matrix");
+
     CoeffMO  coeff_mo(nao, nmo, arma::fill::zeros);
     EnergyMO energy_mo(nmo, arma::fill::zeros);
-
-    arma::eig_sym(energy_mo, coeff_mo, s1e_ao);
-
 }
 
 // double solve_rhf(int nao, int nelec_alph, int nelec_beta, double *s1e, double *h1e, double *h2e) {
