@@ -3,7 +3,7 @@
 #include <cassert>
 
 const double TOL = 1e-8;
-const int MAX_ITER = 100;\
+const int MAX_ITER = 100;
 
 void test_rhf(int nao, int nelec_alph, int nelec_beta, double *s1e, double *h1e, double *h2e) {
     std::cout << "nao = " << nao << std::endl;
